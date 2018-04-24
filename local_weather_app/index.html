@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <title>Quotes</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+    body {
+        background-color: #f0e68c;
+    }
+
+    .container {
+        position: relative;
+        height: 1rem;
+        border: 1px solid;
+    }
+    </style>
+    <!-- jQuery library -->
+</head>
+
+<body>
+  <div class="container-fluid">
+        <div class="row text-center">
+            <h2>Weather App</h2>
+        </div>
+        <div class="row text-center">
+            <div class="jumbotron jumbotron-fluid message">
+                Infor here
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <button id="getData" class="btn btn-primary">
+                    Get Data
+                </button>
+            </div>
+        </div>
+    </div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#getData").on("click", function(){
+                $.getJSON("https://fcc-weather-api.glitch.me/api/current?lat=35&lon=139 ", function(json){
+                    console.log(json);
+                });
+            });
+            // body...
+        });
+    </script>
+</body>
+
+</html>
