@@ -7,6 +7,9 @@ Here is the list of all the web tech related featured in these projects within t
   - Pure JavaScript, HTML 5 and CSS3
   - JQuery, Ajax
   - NodeJS
+
+Each projects has its own README file with User story and requirements inside its dir
+
   
 ## Important note
 ```
