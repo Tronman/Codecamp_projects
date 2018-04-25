@@ -23,6 +23,6 @@ You can also:
   
       
 
-> My resolve is to improve the system and myself
+> <i>My resolve is to improve the system and myself
 > Im in the quest to learn and bring value
-> -- Thulani
+> -- Thulani</i>
