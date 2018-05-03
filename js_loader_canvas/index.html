@@ -3,36 +3,96 @@
 
 <head>
     <meta charset="UTF-8">
+    <style type="text/css">
+    body {
+        margin: 0px;
+        padding: 0px;
+        background-color: #E0D6CA;
+    }
+
+    #counter {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9;
+    }
+
+    .transparent-circle {
+        border-radius: 50%;
+        position: absolute;
+        top: 43%;
+        left: 43%;
+        background-color: rgba(204, 0, 102, 0);
+        border: 3px solid #000;
+        height: 170px;
+        width: 170px;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 75px;
+    }
+
+    #circle1 {
+        height: 165px;
+        width: 165px;
+        background-color: "#696878";
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <canvas id="my_canvas" width="400" height="400" style="border:1px dashed #CCC;"></canvas>
-    <script>
-    var ctx = document.getElementById('my_canvas').getContext('2d');
-    var al = 0;
-    var start = 4.72;
-    var cw = ctx.canvas.scrollWidth;
-    var ch = ctx.canvas.scrollHeight;
-    var diff;
+    <div class="circle1"></div>
+    <canvas id="counter" width="600" height="600" />
+</body>
+<script type="text/javascript">
+var counter = document.getElementById('counter').getContext('2d');
+var no = 0;
+var pointToFill = 4.72;
+var cw = counter.canvas.width;
+var ch = counter.canvas.height;
+var diff;
 
-    function progressSim() {
-        diff = ((al / 100) * Math.PI * 2 * 10).toFixed(2);
-        ctx.clearRectx(0, 0, cw, ch);
-        ctx.lineWidth = 10;
-        ctx.fillStyle = '#09F';
-        ctx.strokeStyle = "#09F";
-        ctx.textAlign = 'center';
-        ctx.fillText(al + '%', cw * .5, ch * .5 + 2, cw);
-        ctx.beginPath();
-        ctx.arc(cw/2, ch/2, 100, start, diff / 10 + start, false);
-        ctx.stroke();
-        if (al >= 100) {
-            clearTimeout(sim);
-        }
-        al++;
+function firstCircle(){
+    counter.lineWidth = 15;
+    counter.fillStyle = '#fff';
+    counter.strokeStyle = '#f44141';
+    counter.beginPath();
+    counter.clearRect(0, 0, cw, ch);
+
+    counter.arc(cw / 2, ch / 2,90,0,2*Math.PI);
+    counter.stroke();
+}
+
+function fillCounter() {
+    diff = ((no / 100) * Math.PI * 2 * 10);
+    
+    counter.lineWidth = 15;
+    counter.fillStyle = '#fff';
+    counter.strokeStyle = '#56f441';
+    counter.textAlign = 'center';
+    counter.font = "25px monospace";
+    counter.fillText(no, cw / 2, ch / 2);
+    counter.beginPath();
+    counter.fillText(no,10000, 1000000);
+    counter.arc(cw / 2, ch / 2, 90, pointToFill, diff / 10 + pointToFill);
+    counter.stroke();
+
+
+    if (no >= 70) {
+        clearTimeout(fill);
     }
-    var sim = setInterval(progressSim, 50);
-    </script>
+    no++;
+}
+firstCircle();
+var fill = setInterval(fillCounter, 50);
+</script>
+
 </body>
 
 </html>
