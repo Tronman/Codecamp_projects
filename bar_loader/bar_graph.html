@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	canvas {
+		border: 2px dashed #333;
+	}
+</style>
+</head>
+
+<body>
+<p>Histograms</p>
+
+<canvas id="graph" height="300" width="600"></canvas>
+<script type="text/javascript">
+	var values = [12,53,46,56,33];
+	window.addEventListener("DOMContentLoaded", buildChart, false);
+
+	function buildChart(){
+
+		var total = 0;
+		for (var i = 0; i < values.length ; i++) {
+			total += values[i];
+		}
+
+		var canvas = document.querySelector("#graph");
+		var context = canvas.getContext("2d");
+		var numPoints = values.length;
+		var padding = 10;
+		var start = padding;
+
+		var colour = "#00FF00";
+		context.fillStyle = colour;
+		context.strokeStyle = "#333";
+		context.lineWidth = 1;
+		var renderingArea = canvas.height - 20 - (padding * numPoints);
+
+		for (var i = 0; i < values.length ; i++) {
+			var pct = (values[i] / total);
+			var side = renderingArea * pct;
+			context.beginPath();
+			context.rect(start, 10, side, side);
+			context.fill();
+			context.stroke();
+			start = start + side + padding;
+		}
+	}
+</script>
+</body>
+</html>
