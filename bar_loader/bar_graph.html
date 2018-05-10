@@ -12,7 +12,7 @@
 <body>
 <p>Histograms</p>
 
-<canvas id="graph" height="300" width="600"></canvas>
+<canvas id="graph" height="800" width="800"></canvas>
 <script type="text/javascript">
 	var values = [12,53,46,56,33];
 	window.addEventListener("DOMContentLoaded", buildChart, false);
@@ -34,16 +34,18 @@
 		context.fillStyle = colour;
 		context.strokeStyle = "#333";
 		context.lineWidth = 1;
-		var renderingArea = canvas.height - 20 - (padding * numPoints);
-
+		var renderingArea = (canvas.width)  - 20- (padding * numPoints );
+		context.rotate(270 * Math.PI /180);
+		context.translate(-800,-50);
 		for (var i = 0; i < values.length ; i++) {
 			var pct = (values[i] / total);
 			var side = renderingArea * pct;
 			context.beginPath();
-			context.rect(start, 10, side, side);
+			
+			context.rect(start, 0, 60, side + 200);
 			context.fill();
 			context.stroke();
-			start = start + side + padding;
+			start = start + side +10 ;
 		}
 	}
 </script>
