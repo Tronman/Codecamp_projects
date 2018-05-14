@@ -11,7 +11,7 @@
     	background: : grey;
     }
     p {
-    	padding: 2px;
+    	padding: 17px;
     }
     canvas {
         border: 2px dashed #333;
@@ -36,8 +36,8 @@
         	<p>People</p>
         	<p>Business</p>
         </div>
-        <div class="col-sm-8">
-            <canvas id="graph" height="160" width="800"></canvas>
+        <div class="col-sm-3">
+            <canvas id="graph" height="350" width="800"></canvas>
             <script type="text/javascript">
             var values = [12, 53, 46, 56, 33];
             window.addEventListener("DOMContentLoaded", buildChart, false);
@@ -69,19 +69,18 @@
                 var renderingArea = (canvas.width) - 20 - (padding * numPoints);
                 // context.font = "20px Georgia";
                 // context.fillText("Hello World!", start / 2, side /2 );
-                context.fillText("hellow text", canvas.width /3 , canvas.height /2);
                 context.rotate(270 * Math.PI / 180);
-                context.translate(-170, -50);
+                context.translate(-320, -50);
                 for (var i = 0; i < values.length; i++) {
                     context.fillStyle = colors[i];
                     var pct = (values[i] / total);
                     var side = renderingArea * pct;
                     context.beginPath();
-                    context.rect(start, 0,30, side + 200);
+                    context.rect(start, 0, 60, side + 200);
                     context.fill();
                     context.font = "20px Georgia";
                     context.stroke();
-                    start = start + 31;
+                    start = start + 61;
 
                 }
                 context.rotate(270 * Math.PI / 180);
@@ -94,14 +93,20 @@
                 context.fillStyle = "#000000";
                 for (var i = 0; i < values.length; i++) {
 
-                    context.fillText(((values[i] / average) * 100).toFixed(0) + "%",  canvas.height/2 , canvas.width/4);
+                    context.fillText(((values[i] / average) * 100).toFixed(0) + "%", start + 20, side + (60 * i));
                   //  console.log(side);
                     console.log(start);
                 }
             }
             </script>
         </div>
-      
+        <div class="col-sm-4">
+        	<p>Overview</p>
+        	<p>Customer</p>
+        	<p>Growth</p>
+        	<p>People</p>
+        	<p>Business</p>
+        </div>
     </div>
 </body>
 
