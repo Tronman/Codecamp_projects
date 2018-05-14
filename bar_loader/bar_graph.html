@@ -1,53 +1,108 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
-	<style type="text/css">
-	canvas {
-		border: 2px dashed #333;
-	}
-</style>
+    <title></title>
+    <style type="text/css">
+    .sub_topic{
+    	text-align: center;
+    }
+    .data {
+    	background: : grey;
+    }
+    p {
+    	padding: 2px;
+    }
+    canvas {
+        border: 2px dashed #333;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
 <body>
-<p>Histograms</p>
+    <h1 class="sub_topic">Senior Analyst</H1>
+    <div class="row">
+        <div class="col-sm-2 data">
+        	<p>Overview</p>
+        	<p>Customer</p>
+        	<p>Growth</p>
+        	<p>People</p>
+        	<p>Business</p>
+        </div>
+        <div class="col-sm-8">
+            <canvas id="graph" height="160" width="800"></canvas>
+            <script type="text/javascript">
+            var values = [12, 53, 46, 56, 33];
+            window.addEventListener("DOMContentLoaded", buildChart, false);
 
-<canvas id="graph" height="800" width="800"></canvas>
-<script type="text/javascript">
-	var values = [12,53,46,56,33];
-	window.addEventListener("DOMContentLoaded", buildChart, false);
+            var sum = values.reduce(function(tot, amount) {
+                return tot + amount;
+            });
 
-	function buildChart(){
+            console.log(sum);
 
-		var total = 0;
-		for (var i = 0; i < values.length ; i++) {
-			total += values[i];
-		}
+            function buildChart() {
 
-		var canvas = document.querySelector("#graph");
-		var context = canvas.getContext("2d");
-		var numPoints = values.length;
-		var padding = 10;
-		var start = padding;
+                var total = 0;
+                for (var i = 0; i < values.length; i++) {
+                    total += values[i];
+                }
 
-		var colour = "#00FF00";
-		context.fillStyle = colour;
-		context.strokeStyle = "#333";
-		context.lineWidth = 1;
-		var renderingArea = (canvas.width)  - 20- (padding * numPoints );
-		context.rotate(270 * Math.PI /180);
-		context.translate(-800,-50);
-		for (var i = 0; i < values.length ; i++) {
-			var pct = (values[i] / total);
-			var side = renderingArea * pct;
-			context.beginPath();
-			
-			context.rect(start, 0, 60, side + 200);
-			context.fill();
-			context.stroke();
-			start = start + side +10 ;
-		}
-	}
-</script>
+                var average = sum / i;
+                console.log(average);
+                var canvas = document.querySelector("#graph");
+                var context = canvas.getContext("2d");
+                var numPoints = values.length;
+                var padding = 10;
+                var start = padding;
+                var colors = ["#7FCAFF", "#7F97FF", "#A77FFF", "#E77FFF", "#FF7FB0", "#FF9C7E", "#FFD77E", "#FFF17E", "#F3FF7E"];
+
+                context.strokeStyle = "#333";
+                context.lineWidth = 1;
+                var renderingArea = (canvas.width) - 20 - (padding * numPoints);
+                // context.font = "20px Georgia";
+                // context.fillText("Hello World!", start / 2, side /2 );
+                context.fillText("hellow text", canvas.width /3 , canvas.height /2);
+                context.rotate(270 * Math.PI / 180);
+                context.translate(-170, -50);
+                for (var i = 0; i < values.length; i++) {
+                    context.fillStyle = colors[i];
+                    var pct = (values[i] / total);
+                    var side = renderingArea * pct;
+                    context.beginPath();
+                    context.rect(start, 0,30, side + 200);
+                    context.fill();
+                    context.font = "20px Georgia";
+                    context.stroke();
+                    start = start + 31;
+
+                }
+                context.rotate(270 * Math.PI / 180);
+                context.translate(-500, -50);
+                context.rotate(270 * Math.PI / 180);
+                context.translate(-500, -50);
+                context.rotate(270 * Math.PI / 180);
+                context.translate(-800, 55);
+                context.strokeStyle = "#333";
+                context.fillStyle = "#000000";
+                for (var i = 0; i < values.length; i++) {
+
+                    context.fillText(((values[i] / average) * 100).toFixed(0) + "%",  canvas.height/2 , canvas.width/4);
+                  //  console.log(side);
+                    console.log(start);
+                }
+            }
+            </script>
+        </div>
+      
+    </div>
 </body>
+
 </html>
