@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!------ Include the above in your HEAD tag ---------->
+</head>
+<div class="container">
+
+  <body>
+    <h1 id="title">Survey Bird</h1>
+    <p id="description">Please fill in thiss survey for us it will help us help you.</p>
+    <form class="form-horizontal" id="survey-form">
+
+      <select id="dropdown">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+      <fieldset>
+        <!-- Form Name -->
+        <legend>Member Survey</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="memberID">Member ID</label>
+          <div class="col-md-1">
+            <input id="memberID" name="memberID" type="number" placeholder="ID" class="form-control input-md">
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="name" id="name-label">Name</label>
+          <div class="col-md-4">
+            <input id="name" name="first_name" type="text" required="true" placeholder="first" class="form-control input-md">
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="last_name">Last Name</label>
+          <div class="col-md-4">
+            <input id="last_name" name="last_name" type="text" placeholder="last" class="form-control input-md">
+          </div>
+        </div>
+
+        <!-- Prepended text-->
+        <div class="form-group">
+
+          <div class="col-md-8">
+            <div class="input-group">
+              <label class="input-group-addon" id="email-label">Email</label>
+              <input id="email" name="email" class="form-control" required="true" placeholder="email" type="email">
+            </div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-8">
+            <div class="input-group">
+              <label class="input-group-addon" id="number-label">Number</label>
+              <input id="number" name="number" class="form-control" placeholder="yournumber" type="number" min="0" max="100">
+            </div>
+
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <p>Please select your preferred contact method:</p>
+        <div>
+          <input type="radio" id="contactChoice1" name="contact" value="email">
+          <label for="contactChoice1">Email</label>
+
+          <input type="radio" id="contactChoice2" name="contact" value="phone">
+          <label for="contactChoice2">Phone</label>
+
+          <input type="radio" id="contactChoice3" name="contact" value="mail">
+          <label for="contactChoice3">Mail</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Choose your interests</legend>
+        <div>
+          <input type="checkbox" id="coding" name="interest" value="coding">
+          <label for="coding">Coding</label>
+        </div>
+        <div>
+          <input type="checkbox" id="music" name="interest" value="music">
+          <label for="music">Music</label>
+        </div>
+      </fieldset>
+      <textarea name="textarea" rows="10" cols="50">Write something here</textarea>
+      <div>
+        <button type="submit" id="submit">Submit</button>
+      </div>
+    </form>
+
+  </body>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js
+"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</html>
